@@ -19,6 +19,7 @@ module.exports = function(app, passport,pool) {
 	//Home
 	app.get('/',  WelcomeController.index);
 
+
 };
 
 // route middleware to make sure

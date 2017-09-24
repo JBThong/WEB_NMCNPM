@@ -1,7 +1,7 @@
 {
-  "name": "lab01",
+  "name": "project",
   "version": "1.0.0",
-  "description": "**Mini SNS** là một bài tập 1 tại môn UDPT.",
+  "description": "NMCNPM PROJECT.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
