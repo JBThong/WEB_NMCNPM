@@ -1,0 +1,260 @@
+
+
+	<div class="main-content">
+				
+		{{>header-admin}}
+		
+		<hr />
+		
+		
+		<script type="text/javascript">
+		jQuery(document).ready(function($)
+		{
+		
+		
+			// Sparkline Charts
+			$('.inlinebar').sparkline('html', {type: 'bar', barColor: '#ff6264'} );
+			$('.inlinebar-2').sparkline('html', {type: 'bar', barColor: '#445982'} );
+			$('.inlinebar-3').sparkline('html', {type: 'bar', barColor: '#00b19d'} );
+			$('.bar').sparkline([ [1,4], [2, 3], [3, 2], [4, 1] ], { type: 'bar' });
+			$('.pie').sparkline('html', {type: 'pie',borderWidth: 0, sliceColors: ['#3d4554', '#ee4749','#00b19d']});
+			$('.linechart').sparkline();
+			$('.pageviews').sparkline('html', {type: 'bar', height: '30px', barColor: '#ff6264'} );
+			$('.uniquevisitors').sparkline('html', {type: 'bar', height: '30px', barColor: '#00b19d'} );
+		
+		
+			$(".monthly-sales").sparkline([1,2,3,5,6,7,2,3,3,4,3,5,7,2,4,3,5,4,5,6,3,2], {
+				type: 'bar',
+				barColor: '#485671',
+				height: '80px',
+				barWidth: 10,
+				barSpacing: 2
+			});
+		
+		
+			// JVector Maps
+			var map = $("#map");
+		
+			map.vectorMap({
+				map: 'europe_merc_en',
+				zoomMin: '3',
+				backgroundColor: '#383f47',
+				focusOn: { x: 0.5, y: 0.8, scale: 3 }
+			});
+		
+		
+		
+			// Line Charts
+			var line_chart_demo = $("#line-chart-demo");
+		
+			var line_chart = Morris.Line({
+				element: 'line-chart-demo',
+				data: [
+					{ y: '2006', a: 100},
+					{ y: '2007', a: 75},
+					{ y: '2008', a: 50},
+					{ y: '2009', a: 75},
+					{ y: '2010', a: 50},
+					{ y: '2011', a: 75},
+					{ y: '2012', a: 100}
+				],
+				xkey: 'y',
+				ykeys: ['a'],
+				labels: ['October 2013'],
+				redraw: true
+			});
+		
+			line_chart_demo.parent().attr('style', '');
+			
+		
+		});
+		
+		
+		function getRandomInt(min, max)
+		{
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+		</script>
+		
+		
+		<div class="row">
+			<div class="col-sm-3 col-xs-6">
+		
+				<div class="tile-stats tile-red">
+					<div class="icon"><i class="entypo-users"></i></div>
+					<div class="num" data-start="0" data-end="83" data-postfix="" data-duration="1500" data-delay="0">0</div>
+		
+					<h3>Registered users</h3>
+					<p>so far in our blog, and our website.</p>
+				</div>
+		
+			</div>
+		
+			<div class="col-sm-3 col-xs-6">
+		
+				<div class="tile-stats tile-green">
+					<div class="icon"><i class="entypo-chart-bar"></i></div>
+					<div class="num" data-start="0" data-end="135" data-postfix="" data-duration="1500" data-delay="600">0</div>
+		
+					<h3>Daily Visitors</h3>
+					<p>this is the average value.</p>
+				</div>
+		
+			</div>
+			
+			<div class="clear visible-xs"></div>
+		
+			<div class="col-sm-3 col-xs-6">
+		
+				<div class="tile-stats tile-aqua">
+					<div class="icon"><i class="entypo-mail"></i></div>
+					<div class="num" data-start="0" data-end="23" data-postfix="" data-duration="1500" data-delay="1200">0</div>
+		
+					<h3>New Messages</h3>
+					<p>messages per day.</p>
+				</div>
+		
+			</div>
+		
+			<div class="col-sm-3 col-xs-6">
+		
+				<div class="tile-stats tile-blue">
+					<div class="icon"><i class="entypo-rss"></i></div>
+					<div class="num" data-start="0" data-end="52" data-postfix="" data-duration="1500" data-delay="1800">0</div>
+		
+					<h3>Subscribers</h3>
+					<p>on our site right now.</p>
+				</div>
+		
+			</div>
+		</div>
+		
+		<br />
+		
+		<div class="row">
+			<div class="col-sm-8">
+		
+				<div class="panel panel-primary" id="charts_env">
+		
+					<div class="panel-heading">
+						<div class="panel-title">Site Stats</div>
+		
+					</div>
+		
+					<div class="panel-body">
+		
+						<div class="tab-content">
+		
+		
+							<div class="tab-pane active" id="line-chart">
+								<div id="line-chart-demo" class="morrischart" style="height: 300px"></div>
+							</div>
+
+		
+						</div>
+		
+					</div>
+		
+					<table class="table table-bordered table-responsive">
+		
+						<thead>
+							<tr>
+								<th width="50%" class="col-padding-1">
+									<div class="pull-left">
+										<div class="h4 no-margin">Pageviews</div>
+										<small>54,127</small>
+									</div>
+									
+		
+								</th>
+								<th width="50%" class="col-padding-1">
+									<div class="pull-left">
+										<div class="h4 no-margin">Unique Visitors</div>
+										<small>25,127</small>
+									</div>
+									
+								</th>
+							</tr>
+						</thead>
+		
+					</table>
+		
+				</div>
+		
+			</div>
+		
+			<div class="col-sm-4">
+		
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<h4>
+								Real Time Stats
+								<br />
+								<small>current server uptime</small>
+							</h4>
+						</div>
+		
+						<div class="panel-options">
+							<a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
+							<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+							<a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
+							<a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
+						</div>
+					</div>
+		
+					<div class="panel-body no-padding">
+						<table class="table table-bordered table-responsive">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Position</th>
+								<th>Activity</th>
+							</tr>
+						</thead>
+		
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Art Ramadani</td>
+								<td>CEO</td>
+								<td class="text-center"><span class="inlinebar">4,3,5,4,5,6</span></td>
+							</tr>
+		
+							<tr>
+								<td>2</td>
+								<td>Ylli Pylla</td>
+								<td>Font-end Developer</td>
+								<td class="text-center"><span class="inlinebar-2">1,3,4,5,3,5</span></td>
+							</tr>
+		
+							<tr>
+								<td>3</td>
+								<td>Arlind Nushi</td>
+								<td>Co-founder</td>
+								<td class="text-center"><span class="inlinebar-3">5,3,2,5,4,5</span></td>
+							</tr>
+		
+						</tbody>
+					</table>
+					</div>
+				</div>
+		
+			</div>
+		</div>
+		
+		
+		<br />
+		
+		<!-- Footer -->
+		<footer class="main">
+			
+			&copy; 2017 <strong>ROYAL SNEAKER</strong> Developed by <a href="" target="_blank">Một đống</a>
+		
+		</footer>
+	</div>
+
+		
+
+

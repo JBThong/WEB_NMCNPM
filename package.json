@@ -1,0 +1,38 @@
+{
+  "name": "lab01",
+  "version": "1.0.0",
+  "description": "**Mini SNS** là một bài tập 1 tại môn UDPT.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UDPT-2017/lab01-1412579-141264.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UDPT-2017/lab01-1412579-141264/issues"
+  },
+  "homepage": "https://github.com/UDPT-2017/lab01-1412579-141264#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.3.5",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.3.2",
+    "express": "^4.13.0",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.11.3",
+    "moment": "^2.18.1",
+    "morgan": "^1.6.0",
+    "multer": "^1.3.0",
+    "passport": "^0.2.2",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "pg": "^7.3.0",
+    "slug": "^0.9.1"
+  }
+}
