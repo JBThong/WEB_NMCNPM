@@ -20,7 +20,7 @@ const pool = require('./app/model/pg');
 
 require('./config/passport')(passport,pool);
 
-var hbs = exphbs.create({ defaultLayout: 'main-admin' ,
+var hbs = exphbs.create({ defaultLayout: 'main-user' ,
 	helpers: {
 		inc : function(value, options)
 			{
