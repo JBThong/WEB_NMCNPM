@@ -3,7 +3,7 @@
 
 var WelcomeController = {
 	index: function(req, res) {
-		res.render('user/index',{
+		res.render('user/about',{
 			
 		});
 	}

@@ -1268,13 +1268,13 @@ ul.grid-part {
 .blog-left b {
   font-size: 2.5em;
     height: 35px;
-	color: #0dc5dd;
+	color: #000000;
 	 font-family: 'Titillium Web', sans-serif;
 	 font-weight:700;
 }
 .blog-left span {
     font-size: 1.7em;
-    color: #0dc5dd;
+    color: #FF3535;
 	 font-family: 'Titillium Web', sans-serif;
 	 font-weight:700;
 }
