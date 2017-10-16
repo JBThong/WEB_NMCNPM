@@ -2081,3 +2081,7 @@ h5.act a,h5.race a,h5.sport a,h5.arc a{
 .breadcrumb {
     margin-bottom: 1em !important;
 }
+
+.form h2{
+    padding: 0.5em 0 1em 0;
+}

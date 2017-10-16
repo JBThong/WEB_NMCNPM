@@ -23,6 +23,8 @@ module.exports = function(app, passport,pool) {
 	app.get('/',  WelcomeController.index);
 	app.get('/detail',  WelcomeController.detail);
 	app.get('/about',  WelcomeController.about);
+	app.get('/signup', WelcomeController.signup);
+	app.get('/login', WelcomeController.login);
 
 	app.use("/admin",AdminController);
 	app.use("/admin/article",ArticleController);

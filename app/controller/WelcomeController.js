@@ -13,12 +13,12 @@ var WelcomeController = {
 		});
 	},
 	login: function(req, res) {
-		res.render('user/index',{
+		res.render('user/login',{
 			
 		});
 	},
 	signup: function(req, res) {
-		res.render('user/index',{
+		res.render('user/signup',{
 			
 		});
 	},
