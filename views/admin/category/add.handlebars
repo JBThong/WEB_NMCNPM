@@ -1,0 +1,96 @@
+
+	<script>
+		$(document).ready(function() {
+			$("#addcate").validate({
+				rules: {
+					name: "required"
+				},
+				messages: {
+					name: "Vui lòng nhập tên danh mục..!"
+				}
+			});
+		});
+	</script>
+
+	<div class="main-content">
+				
+		{{>header-admin}}
+		
+		<hr />
+		{{>breadcrum}}
+		<h2>{{title}}</h2>
+		<div class="row">
+			<div class="col-md-12">
+					
+					<div class="panel panel-primary" data-collapsed="0">
+					
+						<div class="panel-heading">
+							<div class="panel-title">
+								{{title}}
+							</div>
+							
+						</div>
+						
+						<div class="panel-body">
+							
+							<form role="form" method="post" action="" id="addcate" class="form-horizontal form-groups-bordered">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Tên danh mục</label>
+									
+									<div class="col-sm-5">
+									
+											<input type="text" name="name" id="name" class="form-control" placeholder="Tên danh mục" required>
+									
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Vị trí ưu tiên</label>
+									
+									<div class="col-sm-5">
+										<select class="form-control" name="order">
+											<option value="1">Xếp đầu</option>
+											<option value="2">Xếp cuối</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Ẩn/hiện danh mục</label>
+								
+									<div class="col-sm-5">
+							
+										<div class="bs-example">			
+											<div class="make-switch" data-on="primary" data-off="info">
+												<input type="checkbox" name="checkbox" checked>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+
+								<div class="form-group">	
+									<div class="col-sm-8" style="text-align: center;">
+							
+										<div class="bs-example">	
+											<button type="submit" class="btn btn-green btn-icon">
+												Thêm danh mục<i class="entypo-check"></i>
+											</button>
+										</div>
+										
+									</div>
+								</div>							
+							
+							</form>
+						</div>
+				</div>
+			</div>
+		</div>
+		<br />
+		
+		<!-- Footer -->
+		{{>footer-admin}}
+	</div>
+
+
+		
+
+

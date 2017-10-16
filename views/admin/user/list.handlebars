@@ -1,0 +1,129 @@
+
+	<div class="main-content">
+				
+		{{>header-admin}}
+		
+		<hr />
+		{{>breadcrum}}
+		<h2>{{title}}</h2>
+		{{#if message}}
+		    <div class="alert alert-success">{{message}}</div>
+		{{/if}}
+		<div class="row">
+			<div class="col-md-12">
+					
+					<div class="panel panel-primary" data-collapsed="0">
+					
+						<div class="panel-heading">
+							<div class="panel-title">
+								{{title}}
+							</div>
+							
+						</div>	
+
+						<script type="text/javascript">
+							jQuery( document ).ready( function( $ ) {
+								var $table1 = jQuery( '#table-1' );
+								
+								// Initialize DataTable
+								$table1.DataTable( {
+									"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+									"bStateSave": true
+								});
+								
+							} );
+							</script>
+						
+						<div class="panel-body">
+						<table class="table table-bordered datatable" id="table-1">
+							<thead>
+								<tr>
+									<th data-hide="phone">ID</th>
+									<th>Email</th>
+									<th data-hide="phone">Fullname</th>
+									<th data-hide="phone,tablet">Phone</th>
+									<th>Role</th>
+									<th>Thao tác</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="odd gradeX">
+								{{#each list}}
+									<td>{{id}}<input type="hidden" id="id" value="{{id}}"></td>
+									<td>{{email}}</td>
+									<td>{{fullname}}</td>
+									<td class="center">
+										{{phone}}
+									</td>
+									<td>{{#ifCond role '==' 0}} Khách hàng {{/ifCond}}
+									{{#ifCond role '==' 1}} Admin {{/ifCond}}
+									{{#ifCond role '==' 2}} Moderater {{/ifCond}}
+									</td>
+									<td class="center">
+										<a href="/admin/user/edit/{{id}}" class="btn btn-primary btn-sm btn-icon icon-left">
+											<i class="entypo-pencil"></i>
+											Sửa
+										</a>
+										
+										<a href="javascript:void(0)" class="btn btn-danger btn-sm btn-icon icon-left deleteUser">
+											<i class="entypo-cancel"></i>
+											Xoá
+										</a>
+									</td>
+								</tr>
+								{{/each}}
+							</tbody>
+							<tfoot>
+								<tr>
+									<th data-hide="phone">ID</th>
+									<th>Email</th>
+									<th data-hide="phone">Fullname</th>
+									<th data-hide="phone,tablet">Phone</th>
+									<th>Role</th>
+									<th>Thao tác</th>
+								</tr>
+							</tfoot>
+						</table>	
+
+							
+						</div>
+				</div>
+			</div>
+		</div>
+		<br />
+		
+		<!-- Footer -->
+		{{>footer-admin}}
+	</div>
+
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.deleteUser').click(function(){
+				if(window.confirm("Bạn chắc chắn muốn xoá?")){
+					var id =$(this).parent().parent().find('input#id').val();
+					var url ='/admin/user/delete';
+					var target = $(this).parent().parent();
+					$.ajax({
+		                url: url,
+		                type: 'POST',
+		                cache: false,
+		                data:{id:id},
+		                success: function (data){
+		                    if(data){
+		                        target.remove();
+		                    }
+		                    else alert('Ajax không thành công!');
+		                 }
+		            });
+		        }
+		        else return false;
+			});
+			$('div.alert').delay(5000).slideUp();
+		});	
+	</script>
+
+
+		
+
+

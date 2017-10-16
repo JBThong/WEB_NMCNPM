@@ -1,0 +1,110 @@
+
+	
+
+	<div class="main-content">
+				
+		{{>header-admin}}
+		
+		<hr />
+		{{>breadcrum}}
+		<h2>{{title}}</h2>
+		<div class="row">
+			<div class="col-md-12">
+					
+					<div class="panel panel-primary" data-collapsed="0">
+					
+						<div class="panel-heading">
+							<div class="panel-title">
+								{{title}}
+							</div>
+							
+						</div>
+						
+						<div class="panel-body">
+							
+							<form role="form" method="post" action="/admin/user/edit" id="editcate" class="form-horizontal form-groups-bordered">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">ID user</label>
+									<div class="col-sm-5">
+										<input type="text" class="form-control" value="{{user.id}}" disabled>
+										<input type="hidden" name="id" class="form-control" value="{{user.id}}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Email</label>
+									
+									<div class="col-sm-5">
+										<input type="text" class="form-control" value="{{user.email}}" disabled>
+										<input type="hidden" name="email" class="form-control" value="{{user.email}}">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Full name</label>
+									
+									<div class="col-sm-5">
+										<input type="text" name="fullname" class="form-control" value="{{user.fullname}}" required>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Số điện thoại</label>
+									
+									<div class="col-sm-5">
+										<input type="text" name="phone" class="form-control" value="{{user.phone}}" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Password mới(Để trống nếu không cần update)</label>
+									
+									<div class="col-sm-5">
+										<input type="hidden" name="password" class="form-control" value="{{user.password}}">
+										<input type="text" name="newpassword" class="form-control" value="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Password cấp 2 mới(Để trống nếu không cần update)</label>
+									
+									<div class="col-sm-5">
+									<input type="hidden" name="password2" class="form-control" value="{{user.pass2}}">
+										<input type="text" name="newpassword2" class="form-control" value="">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Quyền</label>
+									
+									<div class="col-sm-5">
+										<select class="form-control" name="role" value="{{user.role}}">											
+											<option value="0">Khách hàng</option>
+											<option value="1">Admin</option>
+											<option value="2">Moderater</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group">	
+									<div class="col-sm-8" style="text-align: center;">
+							
+										<div class="bs-example">	
+											<button type="submit" class="btn btn-green btn-icon">
+												Sửa User<i class="entypo-check"></i>
+											</button>
+										</div>
+										
+									</div>
+								</div>							
+							
+							</form>
+						</div>
+				</div>
+			</div>
+		</div>
+		<br />
+		
+		<!-- Footer -->
+		{{>footer-admin}}
+	</div>
+
+
+		
+
+
