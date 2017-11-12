@@ -4,20 +4,15 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/add', function(req, res) {
-    res.render('admin/category/add',{
-        layout: 'main-admin',
-    });
-});
 
 router.get('/list', function(req, res) {
-    res.render('admin/category/list',{
+    res.render('admin/user/list',{
         layout: 'main-admin',
     });
 });
 
 router.get('/edit', function(req, res) {
-    res.render('admin/category/edit',{
+    res.render('admin/user/edit',{
         layout: 'main-admin',
     });
 });

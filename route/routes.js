@@ -4,6 +4,7 @@ var WelcomeController = require('../app/controller/WelcomeController');
 var ArticleController = require('../app/controller/ArticleController');
 var CategoryController = require('../app/controller/CategoryController');
 var AdminController = require('../app/controller/AdminController');
+var UserController = require('../app/controller/UserController');
 
 var multer  =   require('multer');
 var storage =   multer.diskStorage({
@@ -25,10 +26,12 @@ module.exports = function(app, passport,pool) {
 	app.get('/about',  WelcomeController.about);
 	app.get('/signup', WelcomeController.signup);
 	app.get('/login', WelcomeController.login);
+	app.get('/profile', WelcomeController.profile);
 
 	app.use("/admin",AdminController);
 	app.use("/admin/article",ArticleController);
 	app.use("/admin/category",CategoryController);
+	app.use("/admin/user",UserController);
 
 };
 

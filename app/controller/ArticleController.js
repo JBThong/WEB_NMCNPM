@@ -14,6 +14,11 @@ router.get('/list', function(req, res) {
     });
 });
 
+router.get('/edit', function(req, res) {
+    res.render('admin/article/edit',{
+        layout: 'main-admin',
+    });
+});
 
 module.exports = router;
 

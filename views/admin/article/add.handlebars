@@ -48,10 +48,10 @@
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Ảnh thumbnail</label>
 									<div style="margin-left:15px;" class="fileinput fileinput-new" data-provides="fileinput">
-										<div class="fileinput-new thumbnail" style="width: 200px; height: 210px;" data-trigger="fileinput">
-											<img src="http://placehold.it/200x210" alt="">
+										<div class="fileinput-new thumbnail" style="width: 310px; height: 200px;" data-trigger="fileinput">
+											<img src="http://placehold.it/310x200" alt="">
 										</div>
-										<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 210px"></div>
+										<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 310px; max-height: 200px"></div>
 										<div>
 											<span class="btn btn-white btn-file">
 												<span class="fileinput-new">Chọn ảnh</span>
@@ -64,36 +64,35 @@
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Tên sản phẩm</label>
+									<label class="col-sm-3 control-label">Tên bài viết</label>
 									
 									<div class="col-sm-5">
 									
-											<input type="text" name="name" id="name" class="form-control" placeholder="Tên sản phẩm" required>
+											<input type="text" name="name" id="name" class="form-control" placeholder="Tên bài viết" required>
 									
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Giá sản phẩm</label>
-									
-									<div class="col-sm-5">
-									
-											<input type="number" name="price" id="price" class="form-control" placeholder="Giá sản phẩm" required>
-									
-									</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label">Mô tả sản phẩm</label>
+									<label class="col-sm-3 control-label">Mô tả ngắn</label>
 									
 									<div class="col-sm-8">
-										<textarea name="description" class="textarea" placeholder="Thông tin mô tả sản phẩm" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+										<textarea name="description" class="textarea" placeholder="Thông tin mô tả ngắn hiển thị trên trang chủ" style="width: 100%; height: 100px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+											
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Nội dung bài viết</label>
+									
+									<div class="col-sm-8">
+										<textarea name="description" class="textarea" placeholder="Nội dùng bài viêt" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
 											
 									</div>
 								</div>
 								
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Ẩn/hiện sản phẩm</label>
+									<label class="col-sm-3 control-label">Ẩn/hiện bài viết</label>
 								
 									<div class="col-sm-5">
 							
@@ -110,97 +109,18 @@
 						</div>
 					</div>
 			</div>
-			<div class="col-md-4">
-				<div class="panel panel-primary" data-collapsed="0">		
-					<div class="panel-heading">
-						<div class="panel-title">
-							Hình ảnh của sản phẩm
-						</div>				
+
+			<div class="form-group">	
+				<div class="col-sm-8" style="text-align: center;">
+		
+					<div class="bs-example">	
+						<button type="submit" class="btn btn-green btn-icon">
+							Thêm bài viết<i class="entypo-check"></i>
+						</button>
 					</div>
 					
-					<div class="panel-body">
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Ảnh detail</label>
-							<div class="fileinput fileinput-new" data-provides="fileinput">
-								<div class="fileinput-new thumbnail" style="width: 304px; height: 434px;" data-trigger="fileinput">
-									<img src="http://placehold.it/304x434" alt="">
-								</div>
-								<div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 304px; max-height: 434px"></div>
-								<div>
-									<span class="btn btn-white btn-file">
-										<span class="fileinput-new">Select image</span>
-										<span class="fileinput-exists">Change</span>
-										<input type="file" name="imgdetail" accept="image/*">
-									</span>
-									<a href="#" class="btn btn-orange fileinput-exists" data-dismiss="fileinput">Remove</a>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Ảnh detail</label>
-							
-							<div class="col-sm-5">
-								
-								<div class="fileinput fileinput-new" data-provides="fileinput">
-									<span class="btn btn-info btn-file">
-										<span class="fileinput-new">Select file</span>
-										<span class="fileinput-exists">Change</span>
-										<input type="file" accept="image/*" name="imgdetail">
-									</span>
-									<span class="fileinput-filename"></span>
-									<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
-								</div>
-								
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Ảnh detail</label>
-							
-							<div class="col-sm-5">
-							
-								<div class="fileinput fileinput-new" data-provides="fileinput">
-									<span class="btn btn-info btn-file">
-										<span class="fileinput-new">Select file</span>
-										<span class="fileinput-exists">Change</span>
-										<input type="file" accept="image/*" name="imgdetail">
-									</span>
-									<span class="fileinput-filename"></span>
-									<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
-								</div>
-								
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">Ảnh detail</label>
-							
-							<div class="col-sm-5">
-							
-								<div class="fileinput fileinput-new" data-provides="fileinput">
-									<span class="btn btn-info btn-file">
-										<span class="fileinput-new">Select file</span>
-										<span class="fileinput-exists">Change</span>
-										<input type="file" accept="image/*" name="imgdetail">
-									</span>
-									<span class="fileinput-filename"></span>
-									<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>
-								</div>
-								
-							</div>
-						</div>
-					</div>
 				</div>
-			</div>
-			<div class="form-group">	
-									<div class="col-sm-8" style="text-align: center;">
-							
-										<div class="bs-example">	
-											<button type="submit" class="btn btn-green btn-icon">
-												Thêm sản phẩm<i class="entypo-check"></i>
-											</button>
-										</div>
-										
-									</div>
-								</div>	
+			</div>	
 			</form>
 		</div>
 		

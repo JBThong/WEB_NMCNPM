@@ -107,12 +107,12 @@
 					</a>
 					<ul>
 						<li>
-							<a href="/admin/product/list">
+							<a href="/admin/article/list">
 								<span class="title">Danh sách bài viết</span>
 							</a>
 						</li>
 						<li>
-							<a href="/admin/product/add">
+							<a href="/admin/article/add">
 								<span class="title">Thêm bài viết mới</span>
 							</a>
 						</li>
@@ -176,14 +176,13 @@
 	<!-- JavaScripts initializations and stuff -->
 	<script src="/assets/admin/js/neon-custom.js"></script>
 
-	<script src="/
-	assets/js/fileinput.js"></script>
+	<script src="/assets/admin/js/fileinput.js"></script>
 	<!-- Imported scripts on this page -->
 	<script src="/assets/admin/js/bootstrap-switch.min.js"></script>
 
 	<!-- Demo Settings -->
 	<script src="/assets/admin/js/neon-demo.js"></script>
-	<script src="/js/jquery.validate.min.js"></script>
+	<script src="/assets/admin/js/jquery.validate.min.js"></script>
 
 	<script src="/assets/admin/js/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
@@ -191,6 +190,7 @@
 	  $(document).ready(function () {
 	    //bootstrap WYSIHTML5 - text editor
 	    $(".textarea").wysihtml5();
+		$('#table-1').DataTable();
 	  });
 	</script>
 
