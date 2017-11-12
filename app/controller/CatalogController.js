@@ -1,22 +1,16 @@
-//app/controller/CategoryController.js
+//app/controller/catalogController.js
 
 
 var express = require('express');
 var router = express.Router();
-var Category = require('../model/category.js');
 var Catalog = require('../model/catalog.js');
 var moment = require('moment');
 var slug = require('slug');
 router.get('/add', (req, res) => {
-    Catalog.getAll()
-    .then(result => {
-        res.render('admin/Category/add',{
-            layout: 'main-admin',
-            title: 'Thêm loại tin mới',
-            catalog: result
-        }); 
-    })
-    .catch(err => console.log(err));
+    res.render('admin/catalog/add',{
+        layout: 'main-admin',
+        title: 'Thêm danh mục mới'
+    }); 
 });
 
 router.post('/add', (req, res) => {
@@ -25,31 +19,30 @@ router.post('/add', (req, res) => {
 
     var temp = req.body.checkbox ? 'true' : 'false';
     var getTimeNow = moment().format('YYYY-MM-DD HH:mm:ss');
-    var cateInfo = {
+    var cataInfo = {
         name: req.body.name,
         orderb: req.body.order,
         slug: slug(req.body.name,"-").toLowerCase(),
         isHide: temp,
         created_at: getTimeNow,
-        updated_at: getTimeNow,
-        catalog_id: req.body.catalog
+        updated_at: getTimeNow
     };
 
-    Category.newCate(cateInfo)
+    Catalog.newCata(cataInfo)
     .then(()=>{
-        req.flash('messageCate', 'Đã thêm loại tin thành công!');
-        res.redirect('/admin/Category/list');
+        req.flash('messageCate', 'Đã thêm danh mục thành công!');
+        res.redirect('/admin/catalog/list');
     })
     .catch(err=>console.log(err));
 });
 
 router.get('/list', (req, res) =>{
-    Category.getAll()
+    Catalog.getAll()
     .then((result)=>{
-        res.render('admin/Category/list',{
+        res.render('admin/catalog/list',{
             list: result,
             layout: 'main-admin',
-            title: 'Danh sách loại tin',
+            title: 'Danh sách danh mục',
             message: req.flash('messageCate')[0]
         });
     })
@@ -61,26 +54,13 @@ router.get('/list', (req, res) =>{
 });
 
 router.get('/edit/:id', (req, res) => {
-    let catalog;
-    Catalog.getAll()
+
+    Catalog.getById(req.params.id)
     .then(result => {
-        catalog = result;
-        return Category.getById(req.params.id);
-    })
-    .then(result => {
-        let select;
-        for (var i = 0; i < catalog.length; i++) {
-            if(catalog[i].id == result.catalog_id){
-                select += '<option selected value="'+ catalog[i].id +'">'+ catalog[i].name +'</option>';
-            }
-            else
-            select += '<option value="'+ catalog[i].id +'">'+ catalog[i].name +'</option>';
-        }
-        res.render('admin/category/edit',{
+        res.render('admin/catalog/edit',{
             layout: 'main-admin',
-            title: 'Sửa loại tin',
-            cate: result,
-            catalog: select
+            title: 'Sửa danh mục',
+            cata: result,
         }); 
     })
     .catch(err=>console.log(err));
@@ -97,14 +77,13 @@ router.post('/edit/:id', (req,res)=>{
         orderb: req.body.order,
         slug: slug(req.body.name,"-").toLowerCase(),
         ishide: temp,
-        updated_at: getTimeNow,
-        catalog_id: req.body.catalog
+        updated_at: getTimeNow
     };
     console.log(cataInfo);
-    Category.updateById(cataInfo)
+    Catalog.updateById(cataInfo)
     .then(() => {
-        req.flash('messageCate', 'Đã sửa loại tin thành công!');
-        res.redirect('/admin/category/list');
+        req.flash('messageCate', 'Đã Sửa danh mục thành công!');
+        res.redirect('/admin/catalog/list');
     })
     .catch(err => console.log(err));
 })

@@ -1,4 +1,5 @@
 
+
 	<div class="main-content">
 				
 		{{>header-admin}}
@@ -20,24 +21,19 @@
 						
 						<div class="panel-body">
 							
-							<form role="form" method="post" action="" id="addcate" class="form-horizontal form-groups-bordered">
+							<form role="form" method="post" action="" class="form-horizontal form-groups-bordered">
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Thuộc danh mục</label>
-									
+									<label class="col-sm-3 control-label">ID danh mục</label>
 									<div class="col-sm-5">
-										<select class="form-control" name="catalog">
-											{{#each catalog}}
-												<option value="{{id}}">{{name}}</option>
-											{{/each}}
-										</select>
+											<input type="text" class="form-control" value="{{cata.id}}" disabled>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Tên loại tin</label>
+									<label class="col-sm-3 control-label">Tên danh mục</label>
 									
 									<div class="col-sm-5">
-									
-											<input type="text" name="name" id="name" class="form-control" placeholder="Tên loại tin" required>
+											<input type="hidden" name="id" value="{{cata.id}}">
+											<input type="text" name="name" id="name" class="form-control" placeholder="Tên danh mục" value="{{cata.name}}" required>
 									
 									</div>
 								</div>
@@ -45,20 +41,24 @@
 									<label class="col-sm-3 control-label">Vị trí ưu tiên</label>
 									
 									<div class="col-sm-5">
-										<select class="form-control" name="order">
-											<option value="1">Xếp đầu</option>
-											<option value="0">Xếp cuối</option>
+										<select class="form-control" name="order">											
+											<option value="1" {{#if cata.orderb}}selected{{/if}}>Xếp đầu</option>
+											<option value="0" {{#ifCond cata.orderb '==' 0}}selected{{/ifCond}}>Xếp cuối</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Ẩn/hiện loại tin</label>
+									<label class="col-sm-3 control-label">Ẩn/hiện danh mục</label>
 								
 									<div class="col-sm-5">
 							
 										<div class="bs-example">			
 											<div class="make-switch" data-on="primary" data-off="info">
-												<input type="checkbox" name="checkbox">
+											{{#if cata.ishide}}
+												<input type="checkbox" name="checkbox" checked>
+											{{else}}
+												<input type="checkbox" name="checkbox" >
+											{{/if}}
 											</div>
 										</div>
 										
@@ -70,7 +70,7 @@
 							
 										<div class="bs-example">	
 											<button type="submit" class="btn btn-green btn-icon">
-												Thêm loại tin<i class="entypo-check"></i>
+												Sửa danh mục<i class="entypo-check"></i>
 											</button>
 										</div>
 										

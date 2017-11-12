@@ -1,16 +1,4 @@
 
-	<script>
-		$(document).ready(function() {
-			$("#editcate").validate({
-				rules: {
-					name: "required"
-				},
-				messages: {
-					name: "Vui lòng nhập tên danh mục..!"
-				}
-			});
-		});
-	</script>
 
 	<div class="main-content">
 				
@@ -33,19 +21,28 @@
 						
 						<div class="panel-body">
 							
-							<form role="form" method="post" action="" id="editcate" class="form-horizontal form-groups-bordered">
+							<form role="form" method="post" action="" class="form-horizontal form-groups-bordered">
 								<div class="form-group">
-									<label class="col-sm-3 control-label">ID danh mục</label>
+									<label class="col-sm-3 control-label">Thuộc danh mục {{cate.catalog_id}}</label>
+									
+									<div class="col-sm-5">
+										<select class="form-control" name="catalog">		
+											{{{catalog}}}
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">ID loại tin</label>
 									<div class="col-sm-5">
 											<input type="text" class="form-control" value="{{cate.id}}" disabled>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Tên danh mục</label>
+									<label class="col-sm-3 control-label">Tên loại tin</label>
 									
 									<div class="col-sm-5">
 											<input type="hidden" name="id" value="{{cate.id}}">
-											<input type="text" name="name" id="name" class="form-control" placeholder="Tên danh mục" value="{{cate.name}}" required>
+											<input type="text" name="name" id="name" class="form-control" placeholder="Tên loại tin" value="{{cate.name}}" required>
 									
 									</div>
 								</div>
@@ -54,18 +51,19 @@
 									
 									<div class="col-sm-5">
 										<select class="form-control" name="order">											
-											{{{orderb}}}
+											<option value="1" {{#if cate.orderb}}selected{{/if}}>Xếp đầu</option>
+											<option value="0" {{#ifCond cate.orderb '==' 0}}selected{{/ifCond}}>Xếp cuối</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Ẩn/hiện danh mục</label>
+									<label class="col-sm-3 control-label">Ẩn/hiện loại tin</label>
 								
 									<div class="col-sm-5">
 							
 										<div class="bs-example">			
 											<div class="make-switch" data-on="primary" data-off="info">
-											{{#if cate.hide}}
+											{{#if cate.ishide}}
 												<input type="checkbox" name="checkbox" checked>
 											{{else}}
 												<input type="checkbox" name="checkbox" >
@@ -81,7 +79,7 @@
 							
 										<div class="bs-example">	
 											<button type="submit" class="btn btn-green btn-icon">
-												Sửa danh mục<i class="entypo-check"></i>
+												Sửa loại tin<i class="entypo-check"></i>
 											</button>
 										</div>
 										
@@ -98,8 +96,3 @@
 		<!-- Footer -->
 		{{>footer-admin}}
 	</div>
-
-
-		
-
-

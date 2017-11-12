@@ -2,9 +2,13 @@
 
 var WelcomeController = require('../app/controller/WelcomeController');
 var ArticleController = require('../app/controller/ArticleController');
+var CatalogController = require('../app/controller/CatalogController');
 var CategoryController = require('../app/controller/CategoryController');
 var AdminController = require('../app/controller/AdminController');
 var UserController = require('../app/controller/UserController');
+var LoginController = require('../app/controller/LoginController');
+
+var mw = require('../config/middleware');
 
 var multer  =   require('multer');
 var storage =   multer.diskStorage({
@@ -20,68 +24,60 @@ var upload = multer({ storage : storage });
 
 module.exports = function(app, passport,pool) {
 
+	
+
 	//Home
 	app.get('/',  WelcomeController.index);
 	app.get('/detail',  WelcomeController.detail);
 	app.get('/about',  WelcomeController.about);
-	app.get('/signup', WelcomeController.signup);
-	app.get('/login', WelcomeController.login);
+	
 	app.get('/profile', WelcomeController.profile);
 
 	app.use("/admin",AdminController);
 	app.use("/admin/article",ArticleController);
+	app.use("/admin/catalog",CatalogController);
 	app.use("/admin/category",CategoryController);
 	app.use("/admin/user",UserController);
+
+	
+
+	//Login area
+	
+
+	app.get('/login', mw.Logged,LoginController.formLogin);
+	app.post('/login', mw.Logged,LoginController.login);
+
+
+	app.get('/signup', mw.Logged,LoginController.formSignup);
+	app.post('/signup', mw.Logged, passport.authenticate('local-signup', {
+			successRedirect : '/login', // redirect to the secure profile section
+			failureRedirect : '/signup',
+			failureFlash : true, // allow flash messages
+			session: false
+		}));
+
+
+	app.get('/logout', LoginController.logout);
+
+
+	app.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email','user_friends'] }));
+
+	
+	// handle the callback after facebook has authenticated the user
+	app.get('/auth/facebook/callback',
+		passport.authenticate('facebook', {
+			successRedirect : '/',
+			failureRedirect : '/login'
+		}));
+
+	app.use(function(req,res,next){
+		res.locals = ({
+			user: req.user
+		});
+		return next();
+	});
 
 };
 
 // route middleware to make sure
-function isLoggedIn(req, res, next) {
 
-	// if user is authenticated in the session, carry on
-	if (req.isAuthenticated())
-		return next();
-
-	// if they aren't redirect them to the home page
-	res.redirect('/login');
-}
-
-function Logged(req, res, next) {
-
-	// if user isnt authenticated in the session, carry on
-	if (!req.isAuthenticated())
-		return next();
-
-	// if they are redirect them to the home page
-	res.redirect('/');
-}
-
-function LoggedAdmin(req, res, next) {
-
-	// if user isnt authenticated in the session, carry on
-	if (!req.isAuthenticated())
-		return next();
-
-	// if they are redirect them to the home page
-	res.redirect('/admin/dashboard');
-}
-
-function isAdmin(req, res, next) {
-
-	// if user isnt authenticated in the session, carry on
-	if ( req.isAuthenticated() && req.user.role > 0)
-		return next();
-
-	// if they are redirect them to the home page
-	res.redirect('/admin');
-}
-
-function isAdminAccess(req, res, next) {
-
-	// if user isnt authenticated in the session, carry on
-	if (req.user.role == 1)
-		return next();
-
-	// if they are redirect them to the home page
-	res.end("401 - Unauthorized: Access is denied due to invalid credentials");
-}

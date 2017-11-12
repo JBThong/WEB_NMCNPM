@@ -3,23 +3,30 @@
     <div class="row">
 			<div class="col-md-offset-3 col-md-6 form">	
                 <h2>Đăng nhập</h2>
-			    <form >
+				{{#if success}}
+				<div class="alert alert-success">
+						{{success}}
+				</div>
+				{{/if}}
+			    <form action="/login" method="POST">
 					<span class="help-block"></span>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-envelope" style="font-size: 0.7em;"></i></span>
-						<input type="text" class="form-control" maxlength="50" placeholder="Email" >
+						<input type="text" name="email" class="form-control" maxlength="50" placeholder="Email" >
 					</div>
 					<span class="help-block"></span>				
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-						<input  type="password" class="form-control" maxlength="50"  placeholder="Mật khẩu">
+						<input  type="password" name="password" class="form-control" maxlength="50"  placeholder="Mật khẩu">
 					</div>
 					<button class="btn btn-lg btn-danger btn-block" type="submit">Đăng nhập</button>
 				</form>
 				<br>
+				{{#if message}}
 				<div class="alert alert-danger">
-					Tài khoản hoặc mật khẩu không chính xác!
+						{{message}}
 				</div>
+				{{/if}}
 			</div>
     	</div>
 </div>

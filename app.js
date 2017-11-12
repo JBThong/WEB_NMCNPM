@@ -27,6 +27,8 @@ var hbs = exphbs.create({ defaultLayout: 'main-user' ,
 			    return parseInt(value) + 1;
 			},
 		ifCond: function (v1, operator, v2, options) {
+			console.log(v2);
+			//console.log(v1);
 		    switch (operator) {
 		        case '==':
 		            return (v1 == v2) ? options.fn(this) : options.inverse(this);
@@ -65,7 +67,12 @@ var hbs = exphbs.create({ defaultLayout: 'main-user' ,
 			var parts = value.toString().split(".");
 		    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 		    return parts.join(".");
-		}
+		},
+		section: function(name, options){ 
+			if(!this._sections) this._sections = {};
+			this._sections[name] = options.fn(this); 
+			return null;
+		} 
 	},
 });
 

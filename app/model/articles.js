@@ -8,7 +8,7 @@ var Articles = {
         if(errors) {
             reject(errors);
         } else {
-            console.log(result);
+            //console.log(result);
             resolve(result.rows[0]);
         }
       });

@@ -1,33 +1,53 @@
+{{#section 'script'}}
+
+<script type="application/javascript">
+    $(document).ready(function(){
+		$('#submit').on('click',function(e){
+			var pass = $('#pass').val();
+			var conpass = $('#conpass').val();
+			if(pass!==conpass){
+				alert('Xác nhận mật khẩu chưa chính xác!!!')
+				e.preventDefault();
+			}
+		})
+	})
+</script>
+
+{{/section}}
+
+
 <div class="container">
     {{> breadcrum-user}}
     <div class="row">
 			<div class="col-md-offset-3 col-md-6 form">	
                 <h2>Đăng ký tài khoản</h2>
-			    <form >
+			    <form action="/signup" method="POST">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user"></i></span>
-						<input type="text" class="form-control" maxlength="50" placeholder="Họ và tên" >
+						<input type="text" name="fullname" class="form-control" maxlength="50" placeholder="Họ và tên" required>
 					</div>
 					<span class="help-block"></span>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-envelope" style="font-size: 0.7em;"></i></span>
-						<input type="text" class="form-control" maxlength="50" placeholder="Email" >
+						<input type="text" name="email" class="form-control" maxlength="50" placeholder="Email" required>
 					</div>
 					<span class="help-block"></span>				
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-						<input  type="password" class="form-control" maxlength="50"  placeholder="Mật khẩu">
+						<input  type="password" name="password" id="pass" class="form-control" maxlength="50"  placeholder="Mật khẩu" required>
 					</div>
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-						<input  type="password" class="form-control" maxlength="50"  placeholder="Xác nhận mật khẩu">
+						<input  type="password" id="conpass" class="form-control" maxlength="50"  placeholder="Xác nhận mật khẩu" required>
 					</div>
-					<button class="btn btn-lg btn-danger btn-block" type="submit">Đăng ký tài khoản</button>
+					<button class="btn btn-lg btn-danger btn-block" id="submit" type="submit">Đăng ký tài khoản</button>
 				</form>
 				<br>
+				{{#if message}}
 				<div class="alert alert-danger">
-					Xác nhận mật khẩu chưa chính xác!
+					{{message}}
 				</div>
+				{{/if}}
 			</div>
     	</div>
 </div>

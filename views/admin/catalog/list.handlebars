@@ -39,8 +39,7 @@
 							<thead>
 								<tr>
 									<th data-hide="phone">ID</th>
-									<th>Tên loại tin</th>
-									<th>Thuộc danh mục</th>
+									<th>Tên danh mục</th>
 									<th data-hide="phone">Ưu tiên</th>
 									<th data-hide="phone,tablet">Hiện</th>
 									<th>Thời gian</th>
@@ -53,7 +52,6 @@
 								
 									<td>{{id}}</td>
 									<td>{{name}}</td>
-									<td>{{cataname}}</td>
 									<td>{{#if orderb}}
 											Xếp đầu
 										{{else}}
@@ -76,7 +74,7 @@
 									</td>
 									<td>{{updated_at}}</td>
 									<td class="center">
-										<a href="/admin/category/edit/{{id}}" class="btn btn-primary btn-sm btn-icon icon-left">
+										<a href="/admin/catalog/edit/{{id}}" class="btn btn-primary btn-sm btn-icon icon-left">
 											<i class="entypo-pencil"></i>
 											Sửa
 										</a>
@@ -92,11 +90,10 @@
 							<tfoot>
 								<tr>
 									<th data-hide="phone">ID</th>
-									<th>Tên loại tin</th>
-									<th>Thuộc danh mục</th>
+									<th>Tên danh mục</th>
 									<th data-hide="phone">Ưu tiên</th>
 									<th data-hide="phone,tablet">Hiện</th>
-									<th>Thời gian </th>
+									<th>Thời gian</th>
 									<th>Thao tác</th>
 								</tr>
 							</tfoot>

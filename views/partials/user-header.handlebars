@@ -31,7 +31,18 @@
 								</li>					
 								<li><a href="#">Danh mục 3</a></li>
 								<li><a href="/about">Về chúng tôi</a></li>
-								<li><a href="/login">Đăng nhập</a></li>
+								{{#if user}}
+								<li class="dropdown">
+									<a href="#" class="scroll dropdown-toggle" data-toggle="dropdown">Tài khoản<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Thông tin tài khoản</a></li>
+										<li><a href="/logout">Đăng xuất</a></li>
+									</ul>
+								</li>
+								{{else}}
+									{{!-- <li><a href="/login">Đăng nhập</a></li> --}}
+								{{/if}}
+								
 							</ul>
 						</div>
 						<!--/navbar collapse-->
